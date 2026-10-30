@@ -12,11 +12,11 @@ class TestVarasto(unittest.TestCase):
 
     def test_negatiivinen_varaston_tilavuus_nolataan(self):
         varasto = Varasto(-5)
-        self.assertEqual(varasto.tilavuus, 0)
+        self.assertAlmostEqual(varasto.tilavuus, 0)
 
     def test_negatiivinen_varaston_alkusaldo_nolataan(self):
         varasto = Varasto(10, -5)
-        self.assertEqual(varasto.saldo, 0)
+        self.assertAlmostEqual(varasto.saldo, 0)
 
     def test_uudella_varastolla_oikea_tilavuus(self):
         self.assertAlmostEqual(self.varasto.tilavuus, 10)
@@ -35,12 +35,12 @@ class TestVarasto(unittest.TestCase):
     def test_negatiivinen_maara_ei_lisatty(self):
         self.varasto.lisaa_varastoon(-5)
 
-        self.assertEqual(self.varasto.saldo, 0)
+        self.assertAlmostEqual(self.varasto.saldo, 0)
 
     def test_lisays_isompi_maara(self):
         self.varasto.lisaa_varastoon(15)
 
-        self.assertEqual(self.varasto.saldo, 10)
+        self.assertAlmostEqual(self.varasto.saldo, 10)
 
     def test_ottaminen_palauttaa_oikean_maaran(self):
         self.varasto.lisaa_varastoon(8)
@@ -54,7 +54,7 @@ class TestVarasto(unittest.TestCase):
 
         saatu_maara = self.varasto.ota_varastosta(-5)
 
-        self.assertEqual(saatu_maara, 0)
+        self.assertAlmostEqual(saatu_maara, 0)
 
     def test_isomman_maaran_ottaminen(self):
         self.varasto.lisaa_varastoon(8)
@@ -73,4 +73,4 @@ class TestVarasto(unittest.TestCase):
     def test_class_string_correct(self):
         self.varasto.lisaa_varastoon(8)
 
-        self.assertEqual(f"{self.varasto}", "saldo = 8, vielä tilaa 2")
+        self.assertAlmostEqual(f"{self.varasto}", "saldo = 8, vielä tilaa 2")
